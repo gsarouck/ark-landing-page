@@ -216,6 +216,7 @@
       position: absolute; right: 5vw; bottom: 80px;
       display: flex; gap: 48px;
       z-index: 2;
+      max-width: 50%;
     }
 
     .stat {
@@ -786,11 +787,26 @@
       .pilares-grid { grid-template-columns: 1fr 1fr; }
       .mvv-grid { grid-template-columns: 1fr; }
       .diferenciais-grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 32px; }
+      .hero-stats {
+        position: static;
+        margin-top: 40px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 24px;
+        max-width: 100%;
+      }
     }
 
     @media (max-width: 480px) {
       .pilares-grid { grid-template-columns: 1fr; }
+      .hero-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px 32px;
+        justify-content: flex-start;
+      }
+      .stat-num { font-size: 36px; }
+      .stat-label { font-size: 10px; }
     }
   </style>
 </head>
