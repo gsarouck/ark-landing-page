@@ -214,9 +214,8 @@
 
     .hero-stats {
       position: absolute; right: 5vw; bottom: 80px;
-      display: flex; gap: 48px;
+      display: flex; gap: 40px;
       z-index: 2;
-      max-width: 50%;
     }
 
     .stat {
@@ -787,25 +786,35 @@
       .pilares-grid { grid-template-columns: 1fr 1fr; }
       .mvv-grid { grid-template-columns: 1fr; }
       .diferenciais-grid { grid-template-columns: 1fr; }
+      #hero {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-bottom: 60px;
+      }
       .hero-stats {
-        position: static;
+        position: static !important;
         margin-top: 40px;
         justify-content: flex-start;
         flex-wrap: wrap;
-        gap: 24px;
+        gap: 20px 32px;
         max-width: 100%;
+        width: 100%;
       }
     }
 
     @media (max-width: 480px) {
       .pilares-grid { grid-template-columns: 1fr; }
+      #hero { padding: 100px 6vw 60px; }
       .hero-stats {
+        position: static !important;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 20px 32px;
+        gap: 16px 28px;
         justify-content: flex-start;
+        width: 100%;
       }
-      .stat-num { font-size: 36px; }
+      .stat-num { font-size: 38px; }
       .stat-label { font-size: 10px; }
     }
   </style>
