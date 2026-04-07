@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ARK Gestão de Negócios - Consultoria estratégica para transformar sua empresa em operações mais estratégicas, organizadas e lucrativas." />
-  <meta name="keywords" content="consultoria, gestão de negócios, liderança, processos, branding" />
-  <meta name="author" content="ARK Gestão de Negócios" />
-  <title>ARK Gestão de Negócios | Consultoria Estratégica</title>
+  <title>ARK Gestão de Negócios | Estratégia e Resultado</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -101,7 +98,7 @@
 
     .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
 
-    /* ── HERO ── */
+    /* ── HERO (com imagem real de fundo) ── */
     #hero {
       min-height: 100vh;
       background: var(--navy);
@@ -110,10 +107,22 @@
       overflow: hidden;
       padding: 120px 5vw 80px;
     }
+    
+    /* Imagem real de escritório no fundo do hero */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center center/cover no-repeat;
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+    }
 
     .hero-bg-lines {
       position: absolute; inset: 0; pointer-events: none;
       overflow: hidden;
+      z-index: 1;
     }
 
     .hero-bg-lines::before {
@@ -126,17 +135,6 @@
       background: radial-gradient(circle, rgba(0,95,107,0.25) 0%, transparent 70%);
     }
 
-    .hero-bg-lines::after {
-      content: '';
-      position: absolute;
-      bottom: -20%;
-      left: 30%;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
-    }
-
-    /* grid lines */
     .grid-lines {
       position: absolute; inset: 0; pointer-events: none;
       background-image:
@@ -301,6 +299,7 @@
       padding: 48px;
       position: relative;
       overflow: hidden;
+      margin-bottom: 28px;
     }
 
     .sobre-card-main::before {
@@ -337,11 +336,12 @@
     .author-avatar {
       width: 52px; height: 52px;
       border-radius: 50%;
-      background: var(--teal);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px; color: var(--white);
+      overflow: hidden;
       flex-shrink: 0;
+    }
+    .author-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
     }
 
     .author-name {
@@ -353,25 +353,19 @@
       color: var(--gold); text-transform: uppercase;
     }
 
-    .sobre-badge {
-      position: absolute;
-      right: -20px; bottom: -20px;
-      width: 120px; height: 120px;
-      border-radius: 50%;
-      background: var(--gold);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
+    .sobre-office-photo {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+      margin-top: 24px;
     }
-
-    .sobre-badge-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px; color: var(--navy); line-height: 1;
+    .sobre-office-photo img {
+      width: 100%; height: auto;
+      display: block;
+      transition: transform 0.4s ease;
     }
-
-    .sobre-badge-text {
-      font-size: 9px; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; color: var(--navy);
+    .sobre-office-photo:hover img {
+      transform: scale(1.02);
     }
 
     .sobre-text h3 {
@@ -399,12 +393,20 @@
       font-style: italic;
     }
 
-    /* ── PILARES ── */
+    /* ── PILARES (com imagens reais nos cards) ── */
     #pilares {
       padding: 120px 5vw;
       background: var(--navy);
       position: relative;
       overflow: hidden;
+    }
+    #pilares::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+      opacity: 0.05;
+      pointer-events: none;
     }
 
     #pilares .grid-lines {
@@ -454,10 +456,17 @@
 
     .pilar-card:hover::before { transform: scaleX(1); }
 
-    .pilar-icon {
-      font-size: 36px;
+    .pilar-icon-img {
+      width: 56px; height: 56px;
       margin-bottom: 20px;
       display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .pilar-icon-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
     }
 
     .pilar-num {
@@ -562,7 +571,7 @@
       flex-shrink: 0;
     }
 
-    /* ── DIFERENCIAIS ── */
+    /* ── DIFERENCIAIS (com imagens reais) ── */
     #diferenciais {
       padding: 120px 5vw;
       background: var(--white);
@@ -601,11 +610,14 @@
 
     .dif-icon-wrap {
       width: 56px; height: 56px;
-      background: var(--navy);
-      border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px;
+      border-radius: 12px;
+      overflow: hidden;
       margin-bottom: 24px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .dif-icon-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
     }
 
     .dif-title {
@@ -674,42 +686,6 @@
       line-height: 1.7;
     }
 
-    /* ── CONTACT BUTTONS ── */
-    .contact-buttons {
-      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-      margin-top: 24px;
-    }
-
-    .btn-contact {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 24px;
-      border-radius: 2px;
-      font-size: 13px; font-weight: 600;
-      letter-spacing: 1px;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .btn-whatsapp {
-      background: #25D366;
-      color: var(--white);
-    }
-
-    .btn-whatsapp:hover {
-      background: #1fa857;
-      transform: translateY(-2px);
-    }
-
-    .btn-email {
-      background: var(--teal);
-      color: var(--white);
-    }
-
-    .btn-email:hover {
-      background: var(--teal-bright);
-      transform: translateY(-2px);
-    }
-
     /* ── FOOTER ── */
     footer {
       background: #061828;
@@ -763,16 +739,6 @@
       margin-bottom: 12px;
     }
 
-    .contact-item a {
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .contact-item a:hover {
-      color: var(--gold);
-    }
-
     .footer-bottom {
       display: flex; justify-content: space-between; align-items: center;
       padding-top: 28px;
@@ -818,27 +784,19 @@
       .mvv-grid { grid-template-columns: 1fr; }
       .diferenciais-grid { grid-template-columns: 1fr; }
       .hero-stats { gap: 32px; }
-      .sobre-badge { display: none; }
-      .contact-buttons { flex-direction: column; }
-      .btn-contact { width: 100%; justify-content: center; }
     }
 
     @media (max-width: 480px) {
       .pilares-grid { grid-template-columns: 1fr; }
-      nav { padding: 0 4vw; }
-      .nav-links { gap: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
       <svg class="nav-logo-icon" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- A shape / mountain -->
         <polygon points="30,6 10,48 20,48 30,26 40,48 50,48" fill="#005F6B"/>
-        <!-- Arrow overlay -->
         <polyline points="18,38 30,18 50,10" stroke="#D4AF37" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         <polygon points="50,10 42,12 48,18" fill="#D4AF37"/>
       </svg>
@@ -856,7 +814,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section id="hero">
     <div class="hero-bg-lines"></div>
     <div class="grid-lines"></div>
@@ -867,7 +824,7 @@
         A ARK transforma empresas em operações mais estratégicas, organizadas e lucrativas. Do diagnóstico à execução — com método, clareza e direção.
       </p>
       <div class="hero-buttons">
-        <a href="https://wa.me/5513978298152?text=Olá%20ARK!%20Gostaria%20de%20conhecer%20seus%20serviços%20de%20consultoria." class="btn-primary" target="_blank">
+        <a href="https://wa.me/5513978298152" class="btn-primary" target="_blank">
           Quero transformar meu negócio
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="#0A2540" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -878,218 +835,76 @@
       </div>
     </div>
     <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">5</div>
-        <div class="stat-label">Pilares de Atuação</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">360°</div>
-        <div class="stat-label">Visão do Negócio</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Foco em Resultado</div>
-      </div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">Pilares de Atuação</div></div>
+      <div class="stat"><div class="stat-num">360°</div><div class="stat-label">Visão do Negócio</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Foco em Resultado</div></div>
     </div>
   </section>
 
-  <!-- SOBRE -->
   <section id="sobre">
     <div class="sobre-grid">
       <div class="sobre-visual reveal">
         <div class="sobre-card-main">
           <p class="sobre-quote">"Empresas bem estruturadas não dependem do acaso — elas crescem com método, clareza e direção."</p>
           <div class="sobre-author">
-            <div class="author-avatar">GA</div>
-            <div>
-              <div class="author-name">Guilherme Arouck</div>
-              <div class="author-role">Fundador & Consultor de Negócios</div>
-            </div>
+            <div class="author-avatar"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop" alt="Guilherme Arouck"></div>
+            <div><div class="author-name">Guilherme Arouck</div><div class="author-role">Fundador & Consultor de Negócios</div></div>
           </div>
         </div>
-        <div class="sobre-badge">
-          <div class="sobre-badge-num">ARK</div>
-          <div class="sobre-badge-text">Gestão</div>
+        <div class="sobre-office-photo">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format" alt="Escritório ARK consultoria">
         </div>
       </div>
       <div class="sobre-text reveal">
-        <div class="section-tag" style="justify-content: flex-start; margin-bottom: 16px;">
-          <span style="width: 24px; height: 1px; background: var(--teal); display: inline-block;"></span>
-          Quem Somos
-        </div>
+        <div class="section-tag" style="justify-content: flex-start; margin-bottom: 16px;"><span style="width: 24px; height: 1px; background: var(--teal); display: inline-block;"></span> Quem Somos</div>
         <h3>Gestão de alto nível para <span>negócios que evoluem</span></h3>
         <p>A ARK Gestão de Negócios nasce com o propósito de transformar empresas em operações mais estratégicas, organizadas e lucrativas.</p>
-        <p class="sobre-highlight">
-          Nosso trabalho vai além da teoria. Entramos no negócio, entendemos a realidade, identificamos gargalos e construímos soluções práticas.
-        </p>
+        <p class="sobre-highlight">Nosso trabalho vai além da teoria. Entramos no negócio, entendemos a realidade, identificamos gargalos e construímos soluções práticas.</p>
         <p>Atuamos apoiando empresas de diferentes nichos no desenvolvimento de uma gestão sólida, com foco em crescimento sustentável e tomada de decisão inteligente.</p>
       </div>
     </div>
   </section>
 
-  <!-- PILARES -->
   <section id="pilares">
     <div class="grid-lines"></div>
-    <div class="section-header reveal" style="position:relative;z-index:2;">
-      <div class="section-tag">O que fazemos</div>
-      <h2>Nossos <span>Pilares</span> de Atuação</h2>
-      <p class="section-desc">Atuamos diretamente nos pilares essenciais para o sucesso de qualquer negócio.</p>
-    </div>
+    <div class="section-header reveal" style="position:relative;z-index:2;"><div class="section-tag">O que fazemos</div><h2>Nossos <span>Pilares</span> de Atuação</h2><p class="section-desc">Atuamos diretamente nos pilares essenciais para o sucesso de qualquer negócio.</p></div>
     <div class="pilares-grid">
-      <div class="pilar-card reveal">
-        <span class="pilar-num">01</span>
-        <span class="pilar-icon">🧠</span>
-        <div class="pilar-title">Cultura Organizacional</div>
-        <p class="pilar-desc">Fortalecemos identidade, propósito e alinhamento da equipe para uma empresa coesa.</p>
-      </div>
-      <div class="pilar-card reveal">
-        <span class="pilar-num">02</span>
-        <span class="pilar-icon">👑</span>
-        <div class="pilar-title">Liderança</div>
-        <p class="pilar-desc">Desenvolvemos gestores mais estratégicos, preparados e capazes de inspirar times.</p>
-      </div>
-      <div class="pilar-card reveal">
-        <span class="pilar-num">03</span>
-        <span class="pilar-icon">⚙️</span>
-        <div class="pilar-title">Processos</div>
-        <p class="pilar-desc">Estruturamos rotinas eficientes e escaláveis que suportam o crescimento do negócio.</p>
-      </div>
-      <div class="pilar-card reveal">
-        <span class="pilar-num">04</span>
-        <span class="pilar-icon">📊</span>
-        <div class="pilar-title">Neuromarketing</div>
-        <p class="pilar-desc">Entendemos o comportamento do cliente para aumentar conversão e vendas.</p>
-      </div>
-      <div class="pilar-card reveal">
-        <span class="pilar-num">05</span>
-        <span class="pilar-icon">🎯</span>
-        <div class="pilar-title">Branding</div>
-        <p class="pilar-desc">Construímos marcas fortes, posicionadas e desejadas no mercado.</p>
-      </div>
+      <div class="pilar-card reveal"><span class="pilar-num">01</span><div class="pilar-icon-img"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=120&h=120&fit=crop" alt="Cultura Organizacional"></div><div class="pilar-title">Cultura Organizacional</div><p class="pilar-desc">Fortalecemos identidade, propósito e alinhamento da equipe para uma empresa coesa.</p></div>
+      <div class="pilar-card reveal"><span class="pilar-num">02</span><div class="pilar-icon-img"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=120&h=120&fit=crop" alt="Liderança"></div><div class="pilar-title">Liderança</div><p class="pilar-desc">Desenvolvemos gestores mais estratégicos, preparados e capazes de inspirar times.</p></div>
+      <div class="pilar-card reveal"><span class="pilar-num">03</span><div class="pilar-icon-img"><img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=120&h=120&fit=crop" alt="Processos"></div><div class="pilar-title">Processos</div><p class="pilar-desc">Estruturamos rotinas eficientes e escaláveis que suportam o crescimento do negócio.</p></div>
+      <div class="pilar-card reveal"><span class="pilar-num">04</span><div class="pilar-icon-img"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=120&h=120&fit=crop" alt="Neuromarketing"></div><div class="pilar-title">Neuromarketing</div><p class="pilar-desc">Entendemos o comportamento do cliente para aumentar conversão e vendas.</p></div>
+      <div class="pilar-card reveal"><span class="pilar-num">05</span><div class="pilar-icon-img"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=120&h=120&fit=crop" alt="Branding"></div><div class="pilar-title">Branding</div><p class="pilar-desc">Construímos marcas fortes, posicionadas e desejadas no mercado.</p></div>
     </div>
   </section>
 
-  <!-- MISSÃO / VISÃO / VALORES -->
   <section id="mvv">
-    <div class="section-header reveal">
-      <div class="section-tag">Nosso Propósito</div>
-      <h2>Missão, Visão <span>& Valores</span></h2>
-    </div>
+    <div class="section-header reveal"><div class="section-tag">Nosso Propósito</div><h2>Missão, Visão <span>& Valores</span></h2></div>
     <div class="mvv-grid reveal">
-      <div class="mvv-card">
-        <div class="mvv-label">Nossa Missão</div>
-        <div class="mvv-title">Missão</div>
-        <p class="mvv-text">Transformar negócios por meio de uma gestão estratégica, estruturada e orientada a resultados, ajudando empresas a crescer com organização, clareza e lucratividade.</p>
-      </div>
-      <div class="mvv-card">
-        <div class="mvv-label">Nossa Visão</div>
-        <div class="mvv-title">Visão</div>
-        <p class="mvv-text">Ser referência em consultoria de gestão de negócios no Brasil, reconhecida por desenvolver empresas mais estratégicas, líderes mais preparados e marcas mais fortes no mercado.</p>
-      </div>
-      <div class="mvv-card">
-        <div class="mvv-label">Nossos Valores</div>
-        <div class="mvv-title" style="color: var(--navy);">Valores</div>
-        <ul class="valores-list">
-          <li><span class="valor-num">01</span> Foco em Resultado</li>
-          <li><span class="valor-num">02</span> Clareza e Objetividade</li>
-          <li><span class="valor-num">03</span> Compromisso com a Evolução</li>
-          <li><span class="valor-num">04</span> Ética e Transparência</li>
-          <li><span class="valor-num">05</span> Visão Estratégica</li>
-        </ul>
-      </div>
+      <div class="mvv-card"><div class="mvv-label">Nossa Missão</div><div class="mvv-title">Missão</div><p class="mvv-text">Transformar negócios por meio de uma gestão estratégica, estruturada e orientada a resultados, ajudando empresas a crescer com organização, clareza e lucratividade.</p></div>
+      <div class="mvv-card"><div class="mvv-label">Nossa Visão</div><div class="mvv-title">Visão</div><p class="mvv-text">Ser referência em consultoria de gestão de negócios no Brasil, reconhecida por desenvolver empresas mais estratégicas, líderes mais preparados e marcas mais fortes no mercado.</p></div>
+      <div class="mvv-card"><div class="mvv-label">Nossos Valores</div><div class="mvv-title" style="color: var(--navy);">Valores</div><ul class="valores-list"><li><span class="valor-num">01</span> Foco em Resultado</li><li><span class="valor-num">02</span> Clareza e Objetividade</li><li><span class="valor-num">03</span> Compromisso com a Evolução</li><li><span class="valor-num">04</span> Ética e Transparência</li><li><span class="valor-num">05</span> Visão Estratégica</li></ul></div>
     </div>
   </section>
 
-  <!-- DIFERENCIAIS -->
   <section id="diferenciais">
-    <div class="section-header reveal">
-      <div class="section-tag">Por que nos escolher</div>
-      <h2>Nossos <span>Diferenciais</span></h2>
-      <p class="section-desc">O que torna a ARK diferente de qualquer outra consultoria.</p>
-    </div>
+    <div class="section-header reveal"><div class="section-tag">Por que nos escolher</div><h2>Nossos <span>Diferenciais</span></h2><p class="section-desc">O que torna a ARK diferente de qualquer outra consultoria.</p></div>
     <div class="diferenciais-grid">
-      <div class="dif-card reveal">
-        <div class="dif-icon-wrap">🔍</div>
-        <div class="dif-title">Diagnóstico Real do Negócio</div>
-        <p class="dif-text">Não trabalhamos com receitas prontas. Mergulhamos na realidade da sua empresa para identificar os verdadeiros gargalos e oportunidades.</p>
-      </div>
-      <div class="dif-card reveal">
-        <div class="dif-icon-wrap">⚡</div>
-        <div class="dif-title">Soluções Práticas, Não Teoria</div>
-        <p class="dif-text">Cada entrega é aplicável no dia seguinte. Construímos junto com você soluções que funcionam na prática do seu negócio.</p>
-      </div>
-      <div class="dif-card reveal">
-        <div class="dif-icon-wrap">📈</div>
-        <div class="dif-title">Crescimento com Método</div>
-        <p class="dif-text">Estruturamos sua empresa para crescer de forma sustentável, com clareza de direção e processos que suportam a expansão.</p>
-      </div>
+      <div class="dif-card reveal"><div class="dif-icon-wrap"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=120&h=120&fit=crop" alt="Diagnóstico real"></div><div class="dif-title">Diagnóstico Real do Negócio</div><p class="dif-text">Não trabalhamos com receitas prontas. Mergulhamos na realidade da sua empresa para identificar os verdadeiros gargalos e oportunidades.</p></div>
+      <div class="dif-card reveal"><div class="dif-icon-wrap"><img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=120&h=120&fit=crop" alt="Soluções práticas"></div><div class="dif-title">Soluções Práticas, Não Teoria</div><p class="dif-text">Cada entrega é aplicável no dia seguinte. Construímos junto com você soluções que funcionam na prática do seu negócio.</p></div>
+      <div class="dif-card reveal"><div class="dif-icon-wrap"><img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=120&h=120&fit=crop" alt="Crescimento com método"></div><div class="dif-title">Crescimento com Método</div><p class="dif-text">Estruturamos sua empresa para crescer de forma sustentável, com clareza de direção e processos que suportam a expansão.</p></div>
     </div>
   </section>
 
-  <!-- CTA -->
   <section id="cta">
-    <div class="cta-content reveal">
-      <div class="cta-tag">Dê o próximo passo</div>
-      <h2 class="cta-headline">Pronto para um novo<br><span>patamar de resultado?</span></h2>
-      <p class="cta-sub">Converse com a ARK e descubra como uma gestão estratégica pode transformar o seu negócio.</p>
-      <div class="contact-buttons">
-        <a href="https://wa.me/5513978298152?text=Olá%20ARK!%20Gostaria%20de%20conhecer%20seus%20serviços%20de%20consultoria." class="btn-contact btn-whatsapp" target="_blank">
-          💬 WhatsApp
-        </a>
-        <a href="mailto:contato@arkgestao.com.br?subject=Consultoria%20ARK" class="btn-contact btn-email">
-          ✉️ Email
-        </a>
-      </div>
-    </div>
+    <div class="cta-content reveal"><div class="cta-tag">Dê o próximo passo</div><h2 class="cta-headline">Pronto para um novo<br><span>patamar de resultado?</span></h2><p class="cta-sub">Converse com a ARK e descubra como uma gestão estratégica pode transformar o seu negócio.</p><a href="https://wa.me/5513978298152" class="btn-primary" target="_blank" style="font-size:14px; padding: 20px 48px;">Fale com a ARK agora<svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="#0A2540" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="#" class="nav-logo">
-          <svg width="36" height="36" viewBox="0 0 60 60" fill="none">
-            <polygon points="30,6 10,48 20,48 30,26 40,48 50,48" fill="#005F6B"/>
-            <polyline points="18,38 30,18 50,10" stroke="#D4AF37" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <polygon points="50,10 42,12 48,18" fill="#D4AF37"/>
-          </svg>
-          <div class="nav-logo-text">
-            <span class="nav-logo-ark">ARK</span>
-            <span class="nav-logo-sub">Gestão de Negócios</span>
-          </div>
-        </a>
-        <p class="footer-tagline">Gestão estratégica para empresas que desejam evoluir e alcançar novos resultados.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Navegação</h4>
-        <ul>
-          <li><a href="#sobre">Quem Somos</a></li>
-          <li><a href="#pilares">Pilares</a></li>
-          <li><a href="#mvv">Propósito</a></li>
-          <li><a href="#diferenciais">Diferenciais</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4>Contato</h4>
-        <div class="contact-item">
-          <span>📧</span> <a href="mailto:contato@arkgestao.com.br">contato@arkgestao.com.br</a>
-        </div>
-        <div class="contact-item">
-          <span>📱</span> <a href="https://wa.me/5513978298152" target="_blank">(13) 97829-8152</a>
-        </div>
-        <div class="contact-item">
-          <span>📍</span> São Paulo, Brasil
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2025 <span>ARK Gestão de Negócios</span>. Todos os direitos reservados.</p>
-      <p class="footer-copy">Fundada por <span>Guilherme Arouck</span></p>
-    </div>
+    <div class="footer-top"><div class="footer-brand"><a href="#" class="nav-logo"><svg width="36" height="36" viewBox="0 0 60 60" fill="none"><polygon points="30,6 10,48 20,48 30,26 40,48 50,48" fill="#005F6B"/><polyline points="18,38 30,18 50,10" stroke="#D4AF37" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polygon points="50,10 42,12 48,18" fill="#D4AF37"/></svg><div class="nav-logo-text"><span class="nav-logo-ark">ARK</span><span class="nav-logo-sub">Gestão de Negócios</span></div></a><p class="footer-tagline">Gestão estratégica para empresas que desejam evoluir e alcançar novos resultados.</p></div><div class="footer-links"><h4>Navegação</h4><ul><li><a href="#sobre">Quem Somos</a></li><li><a href="#pilares">Pilares</a></li><li><a href="#mvv">Propósito</a></li><li><a href="#diferenciais">Diferenciais</a></li></ul></div><div class="footer-contact"><h4>Contato</h4><div class="contact-item"><span>📧</span> contato@arkgestao.com.br</div><div class="contact-item"><span>📱</span> (13) 97829-8152</div><div class="contact-item"><span>📍</span> São Paulo, Brasil</div></div></div>
+    <div class="footer-bottom"><p class="footer-copy">© 2025 <span>ARK Gestão de Negócios</span>. Todos os direitos reservados.</p><p class="footer-copy">Fundada por <span>Guilherme Arouck</span></p></div>
   </footer>
 
   <script>
-    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
@@ -1100,12 +915,8 @@
       });
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
-
-    // Nav scroll effect
     const nav = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-      nav.style.boxShadow = window.scrollY > 60 ? '0 4px 40px rgba(0,0,0,0.3)' : 'none';
-    });
+    window.addEventListener('scroll', () => { nav.style.boxShadow = window.scrollY > 60 ? '0 4px 40px rgba(0,0,0,0.3)' : 'none'; });
   </script>
 </body>
 </html>
